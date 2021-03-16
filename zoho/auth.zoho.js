@@ -13,20 +13,20 @@ class ZohoAuthentication {
     }
 
     async removeToken(){
-        fs.unlinkSync(`token${this.uniq_name}.zoho`);
+        fs.unlinkSync(`${__dirname}/token${this.uniq_name}.zoho`);
     }
 
     async getToken() {
         if(this.token===null){
             let _token = null;
-            if(fs.existsSync(`token${this.uniq_name}.zoho`))
+            if(fs.existsSync(`${__dirname}/token${this.uniq_name}.zoho`))
             {
-                this.token = await fs.readFileSync(`token${this.uniq_name}.zoho`,"UTF-8");
+                this.token = await fs.readFileSync(`${__dirname}/token${this.uniq_name}.zoho`,"UTF-8");
             }else
             {
                 _token = await this.generateToken();
                 _token = _token.access_token;
-                await fs.writeFileSync(`token${this.uniq_name}.zoho`,_token);
+                await fs.writeFileSync(`${__dirname}/token${this.uniq_name}.zoho`,_token);
                 this.token = _token;
             }
         }
