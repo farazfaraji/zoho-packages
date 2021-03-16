@@ -11,9 +11,8 @@ Connecting To zoho services and manage most of the API's
 
 ##### Using github
 ```bash
-git clone git@github.com:farazfaraji/zoho-boilerplate
-cd zoho-boilerplate
-docker-compose up -d
+git clone git@github.com:farazfaraji/zoho-package
+cd zoho-package
 npm install
 ```
 
