@@ -5,9 +5,9 @@ class People extends ZohoAuth {
         super(uniq_name,client_id, client_secret, refresh_token)
     }
 
-    async getForms(formName) {
+    async getForms(formName,sIndex=1,limit=200) {
         try {
-            return await this.customRequest(`https://people.zoho.com/people/api/forms/${formName}/getRecords`, "POST");
+            return await this.customRequest(`https://people.zoho.com/people/api/forms/${formName}/getRecords?sIndex=${sIndex}&limit=${limit}`, "POST");
         } catch (e) {
             if (e.response !== undefined)
                 console.error(e.response.data);
