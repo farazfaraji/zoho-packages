@@ -1,5 +1,4 @@
-const axios = require("axios");
-const ZohoAuth = require("./../zoho/");
+const ZohoAuth = require("./../zoho/auth.zoho");
 
 class Orchestly extends ZohoAuth {
     constructor(_client_id, _client_secret, _refresh_token) {

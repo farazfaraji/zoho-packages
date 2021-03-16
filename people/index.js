@@ -1,8 +1,8 @@
-const ZohoAuth = require("./../zoho/");
+const ZohoAuth = require("./../zoho/auth.zoho");
 
 class People extends ZohoAuth {
-    constructor(_client_id, _client_secret, _refresh_token) {
-        super(_client_id, _client_secret, _refresh_token)
+    constructor(uniq_name,client_id, client_secret, refresh_token) {
+        super(uniq_name,client_id, client_secret, refresh_token)
     }
 
     async getForms(formName) {

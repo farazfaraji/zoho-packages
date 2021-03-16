@@ -22,8 +22,9 @@ npm install
 
 ```
 const People = require("zoho-package").People;
-const people = new People("CLIENT_ID","CLIENT_SECRET","REFRESH_TOKEN");
+const people = new People("APP_NAME","CLIENT_ID","CLIENT_SECRET","REFRESH_TOKEN");
 ```
+if you are using this package for many tokens you should separate APP_NAME
 
 #### Available Classes
 * People

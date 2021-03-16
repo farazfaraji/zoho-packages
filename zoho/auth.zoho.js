@@ -4,28 +4,30 @@ const request = require('request');
 const axios = require("axios");
 
 class ZohoAuthentication {
-    constructor(_client_id, _client_secret, _refresh_token) {
-        this.client_id = _client_id;
-        this.client_secret = _client_secret;
-        this.refresh_token = _refresh_token;
+    constructor(uniq_name,client_id, client_secret, refresh_token) {
+        this.client_id = client_id;
+        this.client_secret = client_secret;
+        this.refresh_token = refresh_token;
+        this.uniq_name = uniq_name;
         this.token = null;
     }
 
     async removeToken(){
-        fs.unlinkSync("token.zoho");
+        fs.unlinkSync(`token${this.uniq_name}.zoho`);
     }
 
     async getToken() {
         if(this.token===null){
             let _token = null;
-            if(fs.existsSync("token.zoho"))
+            if(fs.existsSync(`token${this.uniq_name}.zoho`))
             {
-                return
+                this.token = await fs.readFileSync(`token${this.uniq_name}.zoho`,"UTF-8");
             }else
             {
                 _token = await this.generateToken();
                 _token = _token.access_token;
-                await fs.writeFileSync("token.zoho",_token);
+                await fs.writeFileSync(`token${this.uniq_name}.zoho`,_token);
+                this.token = _token;
             }
         }
         return this.token;
@@ -75,7 +77,7 @@ class ZohoAuthentication {
         }
 
         config.method = method.toString().toLowerCase();
-        config.header = {
+        config.headers = {
             'content-type': 'application/x-www-form-urlencoded',
             'Authorization': `Zoho-oauthtoken ${token}`,
         };
@@ -84,7 +86,13 @@ class ZohoAuthentication {
             const response = await axios(config);
             return response.data;
         } catch (e) {
-            console.error(e.response.data);
+            if(e.response.status===400)
+            {
+                fs.unlinkSync(`token${this.uniq_name}.zoho`);
+                this.token=null;
+                return this.customRequest(url,method,parameters);
+            }else
+                console.error(e.response.data);
         }
     }
 
