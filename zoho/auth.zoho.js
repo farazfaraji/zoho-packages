@@ -91,11 +91,12 @@ class ZohoAuthentication {
     /**
      *
      * @param scopes Array
-     * @returns {Promise<void>}
+     * @param redirect_url String
+     * @returns {void}
      */
-    async initialize(scopes){
+    initialize(scopes,redirect_url){
         scopes = scopes.join(",");
-        console.log(`Open: https://accounts.zoho.com/oauth/v2/auth?response_type=code&access_type=offline&client_id=${this.client_id}&scope=${scopes}&redirect_uri=https://sigmatelecom.com/support`);
+        console.log(`Open: https://accounts.zoho.com/oauth/v2/auth?response_type=code&access_type=offline&client_id=${this.client_id}&scope=${scopes}&redirect_uri=${redirect_url}`);
         console.log("");
         console.log("");
         console.log("");
@@ -104,7 +105,7 @@ class ZohoAuthentication {
 --data-urlencode 'code=REPLACE_CODE' \\
 --data-urlencode 'client_id=${this.client_id}' \\
 --data-urlencode 'client_secret=${this.client_secret}' \\
---data-urlencode 'redirect_uri=https://sigmatelecom.com/support' \\
+--data-urlencode 'redirect_uri=${redirect_url}' \\
 --data-urlencode 'grant_type=authorization_code'`);
         console.log("");
         console.log("");

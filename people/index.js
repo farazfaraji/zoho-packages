@@ -1,4 +1,3 @@
-const axios = require("axios");
 const ZohoAuth = require("./../zoho/");
 
 class People extends ZohoAuth {
@@ -19,4 +18,4 @@ class People extends ZohoAuth {
 
 }
 
-module.exports = Orchestly;
+module.exports = People;
