@@ -1,6 +1,6 @@
 const ZohoAuth = require("./../zoho/auth.zoho");
 
-class People extends ZohoAuth {
+class CRM extends ZohoAuth {
     constructor(uniq_name,client_id, client_secret, refresh_token) {
         super(uniq_name,client_id, client_secret, refresh_token)
     }
@@ -17,4 +17,4 @@ class People extends ZohoAuth {
     }
 }
 
-module.exports = People;
+module.exports = CRM;

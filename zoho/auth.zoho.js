@@ -15,6 +15,9 @@ class ZohoAuthentication {
     async removeToken(){
         fs.unlinkSync(`${__dirname}/token${this.uniq_name}.zoho`);
     }
+    async fetchLastToken(){
+        return await fs.readFileSync(`${__dirname}/token${this.uniq_name}.zoho`,"UTF-8");
+    }
 
     async getToken() {
         if(this.token===null){

@@ -43,3 +43,9 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 
 #Zoho People Functions
 * getForms
+
+#Zoho Functions
+* removeToken
+* fetchLastToken
+* customRequest
+* initialize
