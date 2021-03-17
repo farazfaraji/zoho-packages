@@ -15,6 +15,24 @@ class People extends ZohoAuth {
                 console.error(e.message);
         }
     }
+
+    async getFormsAllData(formName) {
+        try {
+            let result = [];
+            let data = [];
+            let sIndex = 1;
+            result = await this.getForms(formName);
+            data = [...result.response.result];
+            while (result.response.result.length === 200) {
+                sIndex += 200;
+                result = await this.getForms(formName, sIndex);
+                data.push(...result.response.result);
+            }
+            return data;
+        }catch (e) {
+            console.log(e);
+        }
+    }
 }
 
 module.exports = People;

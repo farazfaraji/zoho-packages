@@ -43,6 +43,10 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 
 #Zoho People Functions
 * getForms
+    * fetch limited data (maximum 200)
+* getFormsAllData
+    * fetch all data in a form
+
 
 #Zoho Functions
 * removeToken
