@@ -46,6 +46,7 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
     * fetch limited data (maximum 200)
 * getFormsAllData
     * fetch all data in a form
+* getAttendanceReport
 
 
 #Zoho Functions

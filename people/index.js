@@ -53,7 +53,7 @@ class People extends ZohoAuth {
      * @param employee_id optional
      * @returns {Promise<*>}
      */
-    async getReport(sdate,edate,employee_id=null){
+    async getAttendanceReport(sdate,edate,employee_id=null){
         try {
             return await this.customRequest(`https://people.zoho.com/people/api/attendance/getUserReport`,"GET",{sdate,edate,employee_id});
         }catch (e) {
