@@ -91,7 +91,8 @@ class ZohoAuthentication {
         } catch (e) {
             if(e.response.status===401)
             {
-                fs.unlinkSync(`token${this.uniq_name}.zoho`);
+                if(fs.existsSync(`${__dirname}/token${this.uniq_name}.zoho`))
+                    fs.unlinkSync(`${__dirname}/token${this.uniq_name}.zoho`);
                 this.token=null;
                 return this.customRequest(url,method,parameters);
             }else
