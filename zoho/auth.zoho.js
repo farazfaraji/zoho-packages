@@ -89,7 +89,7 @@ class ZohoAuthentication {
             const response = await axios(config);
             return response.data;
         } catch (e) {
-            if(e.response.status===400)
+            if(e.response.status===401)
             {
                 fs.unlinkSync(`token${this.uniq_name}.zoho`);
                 this.token=null;
