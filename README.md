@@ -55,3 +55,8 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * fetchLastToken
 * customRequest
 * initialize
+
+#Support
+Please don't forget to contact with me if you have any problem:
+#####Email Address: faraz.faraji@gmail.com
+#####Git Repo: https://github.com/farazfaraji/zoho-packages
