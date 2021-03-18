@@ -42,11 +42,12 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * Replace your code in curl CLI and run it.
 
 #Zoho People Functions
-* getForms
-    * fetch limited data (maximum 200)
-* getFormsAllData
-    * fetch all data in a form
-* getAttendanceReport (date format is MM/dd/YYYY)
+* getForms(formName,sIndex=1,*limit=200)
+    * *limit (maximum 200)
+* getFormsAllData(formName)
+* getAttendanceReport(sdate<MM/dd/YYYY>,edate<MM/dd/YYYY>,*employee_id)
+   * employee_id null for all employees
+* updateForms(formName,data\<Object>,recordId)
 
 
 #Zoho Functions
