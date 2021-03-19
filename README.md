@@ -48,6 +48,10 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * getAttendanceReport(sdate<MM/dd/YYYY>,edate<MM/dd/YYYY>,*employee_id)
    * employee_id null for all employees
 * updateForms(formName,data\<Object>,recordId)
+* getEmployeeLeaves(employeeId,fromDate<MM/dd/YYYY>,endDate<MM/dd/YYYY>)
+* fetchSingleLeave(recordId)
+* getLeavesType(employeeId)
+* getHolidays(employeeId
 
 
 #Zoho Functions

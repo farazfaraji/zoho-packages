@@ -70,6 +70,8 @@ class ZohoAuthentication {
             let params = [];
             for(let parameter in parameters){
                 if (parameters.hasOwnProperty(parameter)) {
+                    if(parameters[parameter]===undefined)
+                        continue;
                     params.push(encodeURI(parameter) + "=" + encodeURI(parameters[parameter]));
                 }
             }

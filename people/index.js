@@ -81,6 +81,70 @@ class People extends ZohoAuth {
                 console.error(e.message);
         }
     }
+
+    /**
+     *
+     * @param employeeId
+     * @returns {Promise<*>}
+     */
+    async getHolidays(employeeId) {
+        try {
+            return await this.customRequest(`https://people.zoho.com/people/api/leave/getHolidays`, "GET",{userId:employeeId});
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    /**
+     * @param employeeId
+     * @returns {Promise<*>}
+     */
+    async getLeavesType(employeeId) {
+        try {
+            return await this.customRequest(`https://people.zoho.com/people/api/leave/getLeaveTypeDetails`, "GET",{userId:employeeId});
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    /**
+     * @param recordId
+     * @returns {Promise<*>}
+     */
+    async fetchSingleLeave(recordId) {
+        try {
+            return await this.customRequest(`https://people.zoho.com/people/api/forms/leave/getDataByID?recordId=${recordId}`, "POST");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    /**
+     * @param employeeId
+     * @param fromDate
+     * @param endDate
+     * @returns {Promise<*>}
+     */
+    async getEmployeeLeaves(employeeId,fromDate,endDate) {
+        try {
+            return await this.customRequest(`https://people.zoho.com/people/api/forms/leave/getEmployeeLeaves?empErecNo=${employeeId}&fromDate=${fromDate}&endDate=${endDate}`, "POST");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
 }
 
 module.exports = People;
