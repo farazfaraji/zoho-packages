@@ -51,7 +51,8 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * getEmployeeLeaves(employeeId,fromDate<MM/dd/YYYY>,endDate<MM/dd/YYYY>)
 * fetchSingleLeave(recordId)
 * getLeavesType(employeeId)
-* getHolidays(employeeId
+* getHolidays(employeeId)
+* insertRecord(formName,data\<Object>)
 
 
 #Zoho Functions

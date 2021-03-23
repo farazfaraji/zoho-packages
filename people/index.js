@@ -145,6 +145,22 @@ class People extends ZohoAuth {
         }
     }
 
+    /**
+     * @param formName
+     * @param data
+     * @returns {Promise<*>}
+     */
+    async insertRecord(formName,data) {
+        try {
+            return await this.customRequest(`https://people.zoho.com/people/api/forms/json/${formName}/insertRecord?inputData=${JSON.stringify(data)}`, "POST");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
 }
 
 module.exports = People;
