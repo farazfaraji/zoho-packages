@@ -136,7 +136,7 @@ class People extends ZohoAuth {
      */
     async getEmployeeLeaves(employeeId,fromDate,endDate) {
         try {
-            return await this.customRequest(`https://people.zoho.com/people/api/forms/leave/getEmployeeLeaves?empErecNo=${employeeId}&fromDate=${fromDate}&endDate=${endDate}`, "POST");
+            return await this.customRequest(`https://people.zoho.com/people/api/leave/leave/getEmployeeLeaves?empErecNo=${employeeId}&fromDate=${fromDate}&endDate=${endDate}`, "POST");
         } catch (e) {
             if (e.response !== undefined)
                 console.error(e.response.data);
