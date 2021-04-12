@@ -1,8 +1,8 @@
 const ZohoAuth = require("./../zoho/auth.zoho");
 
 class Orchestly extends ZohoAuth {
-    constructor(_client_id, _client_secret, _refresh_token) {
-        super(_client_id, _client_secret, _refresh_token)
+    constructor(_uniq_name,_client_id, _client_secret, _refresh_token) {
+        super(_uniq_name,_client_id, _client_secret, _refresh_token)
     }
 
     async getAllJobs(org_id) {
