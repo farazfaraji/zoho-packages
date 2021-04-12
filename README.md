@@ -54,6 +54,13 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * getHolidays(employeeId)
 * insertRecord(formName,data\<Object>)
 
+#Zoho Orchestly
+* getAllJobs(org_id)
+* getAllReports(org_id)
+* getReport(org_id,report_id)
+* getAllLayout(org_id)
+* getLayer(org_id,layout_id)
+
 
 #Zoho Functions
 * removeToken

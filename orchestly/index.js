@@ -6,7 +6,6 @@ class Orchestly extends ZohoAuth {
     }
 
     async getAllJobs(org_id) {
-        const token = await this.getToken();
         try {
             return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/job`, "GET");
         } catch (e) {
@@ -31,6 +30,28 @@ class Orchestly extends ZohoAuth {
     async getReport(org_id,report_id) {
         try {
             return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/reports/${report_id}`, "GET");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    async getAllLayout(org_id) {
+        try {
+            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/layout`, "GET");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    async getLayer(org_id,layout_id) {
+        try {
+            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/layout/${layout_id}`, "GET");
         } catch (e) {
             if (e.response !== undefined)
                 console.error(e.response.data);
