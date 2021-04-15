@@ -7,6 +7,7 @@ Connecting To zoho services and manage most of the API's
 * Zoho People
 
 
+
 ## Installation
 
 ##### Using github
@@ -54,7 +55,7 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * getHolidays(employeeId)
 * insertRecord(formName,data\<Object>)
 
-#Zoho Orchestly
+#Zoho Orchestly - Or QNTRL
 * getAllJobs(org_id)
 * getAllReports(org_id)
 * getReport(org_id,report_id)
