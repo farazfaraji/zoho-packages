@@ -56,7 +56,8 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * insertRecord(formName,data\<Object>)
 
 #Zoho Orchestly - Or QNTRL
-* getAllJobs(org_id)
+* getAllJobs(org_id,parameters\<Object>)
+* getAllOfAllJobs(org_id,parameters\<Object>)
 * getAllReports(org_id)
 * getReport(org_id,report_id)
 * getAllLayout(org_id)

@@ -16,6 +16,25 @@ class Orchestly extends ZohoAuth {
         }
     }
 
+    async getAllOfAllJobs(org_id,parameters) {
+        try {
+            let result = [];
+            let data = [];
+            let sIndex = 0;
+            result = await this.getAllJobs(org_id,parameters);
+            data = [...result.response.result];
+            while (result.response.result.length === 100) {
+                sIndex += 100;
+                parameters.index = sIndex;
+                result = await this.getAllJobs(org_id,parameters);
+                data.push(...result.response.result);
+            }
+            return data;
+        }catch (e) {
+            console.log(e);
+        }
+    }
+
     async getAllReports(org_id) {
         try {
             return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/reports`, "GET");
