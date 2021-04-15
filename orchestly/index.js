@@ -5,9 +5,9 @@ class Orchestly extends ZohoAuth {
         super(_uniq_name,_client_id, _client_secret, _refresh_token)
     }
 
-    async getAllJobs(org_id) {
+    async getAllJobs(org_id,parameters) {
         try {
-            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/job`, "GET");
+            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/job`, "GET",parameters);
         } catch (e) {
             if (e.response !== undefined)
                 console.error(e.response.data);
