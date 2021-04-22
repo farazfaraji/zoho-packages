@@ -22,12 +22,12 @@ class Orchestly extends ZohoAuth {
             let data = [];
             let sIndex = 0;
             result = await this.getAllJobs(org_id,parameters);
-            data = [...result.response.result];
-            while (result.response.result.length === 100) {
+            data = [...result.job_list];
+            while (result.job_list.length === 100) {
                 sIndex += 100;
                 parameters.index = sIndex;
                 result = await this.getAllJobs(org_id,parameters);
-                data.push(...result.response.result);
+                data.push(...result.job_list);
             }
             return data;
         }catch (e) {
@@ -78,6 +78,18 @@ class Orchestly extends ZohoAuth {
                 console.error(e.message);
         }
     }
+
+    async getAllCustomFields(org_id) {
+        try {
+            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/customfield`, "GET");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
 }
 
 module.exports = Orchestly;
