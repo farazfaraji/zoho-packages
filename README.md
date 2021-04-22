@@ -62,6 +62,7 @@ zoho.initialize(["ZohoCRM.modules.ALL"],"http://github.com/redirect");
 * getReport(org_id,report_id)
 * getAllLayout(org_id)
 * getLayer(org_id,layout_id)
+* getAllCustomFields(org_id)
 
 
 #Zoho Functions
