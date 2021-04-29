@@ -89,6 +89,18 @@ class Orchestly extends ZohoAuth {
                 console.error(e.message);
         }
     }
+
+    async getAllCustomFields(org_id) {
+        try {
+            return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/customfield`, "GET");
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
 }
 
 module.exports = Orchestly;
