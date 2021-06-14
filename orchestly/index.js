@@ -16,6 +16,53 @@ class Orchestly extends ZohoAuth {
         }
     }
 
+    async getJobsByDate(org_id,date,parameters) {
+        try {
+            let indexId = 0;
+            parameters.range = 3;
+            let selectedData = {}
+            selectedData.job_list = [];
+            let canContinue = true
+            while(canContinue){
+                parameters.index = indexId * parameters.range
+                const data =  await this._getJobsByDate(org_id,date,parameters);
+                for(let i = data.job_list.length -1 ;i>=0;i--){
+                    const dataDate = data.job_list[i].modified_date;
+                    if(dataDate === date )
+                    {
+                        selectedData.job_list.push(...data.job_list);
+                        indexId++;
+                        break;
+                    }else
+                    {
+                        canContinue = false;
+                        selectedData.job_list.push(...data.job_list.slice(0,i));
+                    }
+                }
+
+            }
+
+            return selectedData.job_list;
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
+    async _getJobsByDate(org_id,date,parameters) {
+        try {
+            const data =  await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/job`, "GET",parameters);
+            return data;
+        } catch (e) {
+            if (e.response !== undefined)
+                console.error(e.response.data);
+            else
+                console.error(e.message);
+        }
+    }
+
     async getJobDetail(org_id,jobId,parameters) {
         try {
             return await this.customRequest(`https://orchestlyapi.zoho.com/blueprint/api/${org_id}/job/${jobId}`, "GET",parameters);
